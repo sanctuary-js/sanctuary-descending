@@ -58,7 +58,7 @@ Descending differs from [Identity][] only in the behaviour of its
 . 'Contravariant   ❌   ' ]
 ```
 
-#### <a name="Descending" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L133">`Descending :: a -⁠> Descending a`</a>
+#### <a name="Descending" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L133">`Descending :: a -⁠> Descending a`</a>
 
 Descending's sole data constructor. Additionally, it serves as the
 Descending [type representative][].
@@ -68,7 +68,7 @@ Descending [type representative][].
 Descending (42)
 ```
 
-#### <a name="Descending.@@type" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L157">`Descending.@@type :: String`</a>
+#### <a name="Descending.@@type" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L157">`Descending.@@type :: String`</a>
 
 Descending [type identifier][].
 
@@ -80,7 +80,7 @@ Descending [type identifier][].
 {namespace: 'sanctuary-descending', name: 'Descending', version: 1}
 ```
 
-#### <a name="Descending.fantasy-land/of" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L170">`Descending.fantasy-land/of :: a -⁠> Descending a`</a>
+#### <a name="Descending.fantasy-land/of" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L170">`Descending.fantasy-land/of :: a -⁠> Descending a`</a>
 
 `of (Descending) (x)` is equivalent to `Descending (x)`.
 
@@ -89,7 +89,7 @@ Descending [type identifier][].
 Descending (42)
 ```
 
-#### <a name="Descending.fantasy-land/chainRec" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L183">`Descending.fantasy-land/chainRec :: ((a -⁠> c, b -⁠> c, a) -⁠> Descending c, a) -⁠> Descending b`</a>
+#### <a name="Descending.fantasy-land/chainRec" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L183">`Descending.fantasy-land/chainRec :: ((a -⁠> c, b -⁠> c, a) -⁠> Descending c, a) -⁠> Descending b`</a>
 
 ```javascript
 > Z.chainRec (
@@ -107,7 +107,7 @@ Descending (64)
 Descending (0)
 ```
 
-#### <a name="Descending.prototype.@@show" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L206">`Descending#@@show :: Showable a => Descending a ~> () -⁠> String`</a>
+#### <a name="Descending.prototype.@@show" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L206">`Descending#@@show :: Showable a => Descending a ~> () -⁠> String`</a>
 
 `show (Descending (x))` is equivalent to
 `'Descending (' + show (x) + ')'`.
@@ -117,7 +117,7 @@ Descending (0)
 'Descending (["foo", "bar", "baz"])'
 ```
 
-#### <a name="Descending.prototype.fantasy-land/equals" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L219">`Descending#fantasy-land/equals :: Setoid a => Descending a ~> Descending a -⁠> Boolean`</a>
+#### <a name="Descending.prototype.fantasy-land/equals" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L219">`Descending#fantasy-land/equals :: Setoid a => Descending a ~> Descending a -⁠> Boolean`</a>
 
 `Descending (x)` is equal to `Descending (y)` [iff][] `x` is equal to `y`
 according to [`Z.equals`][].
@@ -130,7 +130,7 @@ true
 false
 ```
 
-#### <a name="Descending.prototype.fantasy-land/lte" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L235">`Descending#fantasy-land/lte :: Ord a => Descending a ~> Descending a -⁠> Boolean`</a>
+#### <a name="Descending.prototype.fantasy-land/lte" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L235">`Descending#fantasy-land/lte :: Ord a => Descending a ~> Descending a -⁠> Boolean`</a>
 
 `Descending (x)` is less than or equal to `Descending (y)` [iff][]
 `y` is less than or equal to `x` according to [`Z.lte`][] (note the
@@ -141,7 +141,7 @@ transposition of `x` and `y`).
 [Descending (5), Descending (2), Descending (1)]
 ```
 
-#### <a name="Descending.prototype.fantasy-land/concat" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L249">`Descending#fantasy-land/concat :: Semigroup a => Descending a ~> Descending a -⁠> Descending a`</a>
+#### <a name="Descending.prototype.fantasy-land/concat" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L249">`Descending#fantasy-land/concat :: Semigroup a => Descending a ~> Descending a -⁠> Descending a`</a>
 
 `concat (Descending (x)) (Descending (y))` is equivalent to
 `Descending (concat (x) (y))`.
@@ -151,7 +151,7 @@ transposition of `x` and `y`).
 Descending ([1, 2, 3, 4, 5, 6])
 ```
 
-#### <a name="Descending.prototype.fantasy-land/map" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L262">`Descending#fantasy-land/map :: Descending a ~> (a -⁠> b) -⁠> Descending b`</a>
+#### <a name="Descending.prototype.fantasy-land/map" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L262">`Descending#fantasy-land/map :: Descending a ~> (a -⁠> b) -⁠> Descending b`</a>
 
 `map (f) (Descending (x))` is equivalent to `Descending (f (x))`.
 
@@ -160,7 +160,7 @@ Descending ([1, 2, 3, 4, 5, 6])
 Descending (8)
 ```
 
-#### <a name="Descending.prototype.fantasy-land/ap" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L274">`Descending#fantasy-land/ap :: Descending a ~> Descending (a -⁠> b) -⁠> Descending b`</a>
+#### <a name="Descending.prototype.fantasy-land/ap" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L274">`Descending#fantasy-land/ap :: Descending a ~> Descending (a -⁠> b) -⁠> Descending b`</a>
 
 `ap (Descending (f)) (Descending (x))` is equivalent to
 `Descending (f (x))`.
@@ -170,7 +170,7 @@ Descending (8)
 Descending (8)
 ```
 
-#### <a name="Descending.prototype.fantasy-land/chain" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L287">`Descending#fantasy-land/chain :: Descending a ~> (a -⁠> Descending b) -⁠> Descending b`</a>
+#### <a name="Descending.prototype.fantasy-land/chain" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L287">`Descending#fantasy-land/chain :: Descending a ~> (a -⁠> Descending b) -⁠> Descending b`</a>
 
 `chain (f) (Descending (x))` is equivalent to `f (x)`.
 
@@ -179,7 +179,7 @@ Descending (8)
 Descending (100)
 ```
 
-#### <a name="Descending.prototype.fantasy-land/reduce" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L299">`Descending#fantasy-land/reduce :: Descending a ~> ((b, a) -⁠> b, b) -⁠> b`</a>
+#### <a name="Descending.prototype.fantasy-land/reduce" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L299">`Descending#fantasy-land/reduce :: Descending a ~> ((b, a) -⁠> b, b) -⁠> b`</a>
 
 `reduce (f) (x) (Descending (y))` is equivalent to `f (x) (y)`.
 
@@ -188,7 +188,7 @@ Descending (100)
 [1, 2, 3, 4, 5, 6]
 ```
 
-#### <a name="Descending.prototype.fantasy-land/traverse" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L311">`Descending#fantasy-land/traverse :: Applicative f => Descending a ~> (TypeRep f, a -⁠> f b) -⁠> f (Descending b)`</a>
+#### <a name="Descending.prototype.fantasy-land/traverse" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L311">`Descending#fantasy-land/traverse :: Applicative f => Descending a ~> (TypeRep f, a -⁠> f b) -⁠> f (Descending b)`</a>
 
 `traverse (_) (f) (Descending (x))` is equivalent to
 `map (Descending) (f (x))`.
@@ -198,7 +198,7 @@ Descending (100)
 [Descending (101), Descending (102), Descending (103)]
 ```
 
-#### <a name="Descending.prototype.fantasy-land/extend" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L324">`Descending#fantasy-land/extend :: Descending a ~> (Descending a -⁠> b) -⁠> Descending b`</a>
+#### <a name="Descending.prototype.fantasy-land/extend" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L324">`Descending#fantasy-land/extend :: Descending a ~> (Descending a -⁠> b) -⁠> Descending b`</a>
 
 `extend (f) (Descending (x))` is equivalent to
 `Descending (f (Descending (x)))`.
@@ -208,7 +208,7 @@ Descending (100)
 Descending (100)
 ```
 
-#### <a name="Descending.prototype.fantasy-land/extract" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.0.0/index.js#L337">`Descending#fantasy-land/extract :: Descending a ~> () -⁠> a`</a>
+#### <a name="Descending.prototype.fantasy-land/extract" href="https://github.com/sanctuary-js/sanctuary-descending/blob/v1.1.0/index.js#L337">`Descending#fantasy-land/extract :: Descending a ~> () -⁠> a`</a>
 
 `extract (Descending (x))` is equivalent to `x`.
 
@@ -219,8 +219,8 @@ Descending (100)
 
 [Fantasy Land]:             https://github.com/fantasyland/fantasy-land/tree/v3.5.0
 [Identity]:                 https://github.com/sanctuary-js/sanctuary-identity
-[`Z.equals`]:               https://github.com/sanctuary-js/sanctuary-type-classes/tree/v9.0.0#equals
-[`Z.lte`]:                  https://github.com/sanctuary-js/sanctuary-type-classes/tree/v9.0.0#lte
+[`Z.equals`]:               https://github.com/sanctuary-js/sanctuary-type-classes/tree/v10.0.0#equals
+[`Z.lte`]:                  https://github.com/sanctuary-js/sanctuary-type-classes/tree/v10.0.0#lte
 [iff]:                      https://en.wikipedia.org/wiki/If_and_only_if
 [type identifier]:          https://github.com/sanctuary-js/sanctuary-type-identifiers/tree/v2.0.1
 [type representative]:      https://github.com/fantasyland/fantasy-land/tree/v3.5.0#type-representatives
