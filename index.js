@@ -107,7 +107,7 @@
   //. .             (Z[k].test (Descending (Useless)) ? '\u2705   ' :
   //. .              Z[k].test (Descending (['foo'])) ? '\u2705 * ' :
   //. .              /* otherwise */                    '\u274C   '))
-  //. .       (S.keys (Z.filter ($.test ([]) ($.TypeClass), Z)))
+  //. .       (S.keys (S.unchecked.filter (S.is ($.TypeClass)) (Z)))
   //. [ 'Setoid          ✅ * ',  // if ‘a’ satisfies Setoid
   //. . 'Ord             ✅ * ',  // if ‘a’ satisfies Ord
   //. . 'Semigroupoid    ❌   ',
