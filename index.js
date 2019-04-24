@@ -54,13 +54,15 @@
     /* eslint-disable no-unused-vars */
     var S = __doctest.require ('sanctuary');
     var $ = __doctest.require ('sanctuary-def');
-    var type = __doctest.require ('sanctuary-type-identifiers');
     /* eslint-enable no-unused-vars */
   }
+
+  var descendingTypeIdent = 'sanctuary-descending/Descending@1';
 
   var prototype = {
     /* eslint-disable key-spacing */
     'constructor':            Descending,
+    '@@type':                 descendingTypeIdent,
     '@@show':                 Descending$prototype$show,
     'fantasy-land/map':       Descending$prototype$map,
     'fantasy-land/ap':        Descending$prototype$ap,
@@ -150,19 +152,6 @@
     descending.value = value;
     return descending;
   }
-
-  //# Descending.@@type :: String
-  //.
-  //. Descending [type identifier][].
-  //.
-  //. ```javascript
-  //. > type (Descending (42))
-  //. 'sanctuary-descending/Descending@1'
-  //.
-  //. > type.parse (type (Descending (42)))
-  //. {namespace: 'sanctuary-descending', name: 'Descending', version: 1}
-  //. ```
-  Descending['@@type'] = 'sanctuary-descending/Descending@1';
 
   //# Descending.fantasy-land/of :: a -> Descending a
   //.
