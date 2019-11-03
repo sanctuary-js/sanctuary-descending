@@ -58,9 +58,12 @@
     /* eslint-enable no-unused-vars */
   }
 
+  var descendingTypeIdent = 'sanctuary-descending/Descending@1';
+
   var prototype = {
     /* eslint-disable key-spacing */
     'constructor':            Descending,
+    '@@type':                 descendingTypeIdent,
     '@@show':                 Descending$prototype$show,
     'fantasy-land/map':       Descending$prototype$map,
     'fantasy-land/ap':        Descending$prototype$ap,
@@ -96,11 +99,14 @@
   //. ```javascript
   //. > const Useless = require ('sanctuary-useless')
   //.
+  //. > const isTypeClass = x =>
+  //. .   type (x) === 'sanctuary-type-classes/TypeClass@1'
+  //.
   //. > S.map (k => k + ' '.repeat (16 - k.length) +
   //. .             (Z[k].test (Descending (Useless)) ? '\u2705   ' :
   //. .              Z[k].test (Descending (['foo'])) ? '\u2705 * ' :
   //. .              /* otherwise */                    '\u274C   '))
-  //. .       (S.keys (S.unchecked.filter (S.is ($.TypeClass)) (Z)))
+  //. .       (S.keys (S.unchecked.filter (isTypeClass) (Z)))
   //. [ 'Setoid          ✅ * ',  // if ‘a’ satisfies Setoid
   //. . 'Ord             ✅ * ',  // if ‘a’ satisfies Ord
   //. . 'Semigroupoid    ❌   ',
@@ -150,19 +156,6 @@
     descending.value = value;
     return descending;
   }
-
-  //# Descending.@@type :: String
-  //.
-  //. Descending [type identifier][].
-  //.
-  //. ```javascript
-  //. > type (Descending (42))
-  //. 'sanctuary-descending/Descending@1'
-  //.
-  //. > type.parse (type (Descending (42)))
-  //. {namespace: 'sanctuary-descending', name: 'Descending', version: 1}
-  //. ```
-  Descending['@@type'] = 'sanctuary-descending/Descending@1';
 
   //# Descending.fantasy-land/of :: a -> Descending a
   //.
@@ -352,5 +345,4 @@
 //. [`Z.equals`]:               v:sanctuary-js/sanctuary-type-classes#equals
 //. [`Z.lte`]:                  v:sanctuary-js/sanctuary-type-classes#lte
 //. [iff]:                      https://en.wikipedia.org/wiki/If_and_only_if
-//. [type identifier]:          v:sanctuary-js/sanctuary-type-identifiers
 //. [type representative]:      v:fantasyland/fantasy-land#type-representatives
