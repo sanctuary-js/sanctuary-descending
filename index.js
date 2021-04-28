@@ -24,11 +24,11 @@
 //. Descending differs from [Identity][] only in the behaviour of its
 //. `fantasy-land/lte` method.
 
-(function(f) {
+(f => {
 
   'use strict';
 
-  var util = {inspect: {}};
+  const util = {inspect: {}};
 
   /* istanbul ignore else */
   if (typeof module === 'object' && typeof module.exports === 'object') {
@@ -36,30 +36,29 @@
                         require ('sanctuary-show'),
                         require ('sanctuary-type-classes'));
   } else if (typeof define === 'function' && define.amd != null) {
-    define (['sanctuary-show', 'sanctuary-type-classes'], function(show, Z) {
-      return f (util, show, Z);
-    });
+    define (['sanctuary-show', 'sanctuary-type-classes'],
+            (show, Z) => f (util, show, Z));
   } else {
     self.sanctuaryDescending = f (util,
                                   self.sanctuaryShow,
                                   self.sanctuaryTypeClasses);
   }
 
-} (function(util, show, Z) {
+}) ((util, show, Z) => {
 
   'use strict';
 
   /* istanbul ignore if */
   if (typeof __doctest !== 'undefined') {
-    /* eslint-disable no-unused-vars */
+    /* eslint-disable no-unused-vars, no-var */
     var S = __doctest.require ('sanctuary');
     var $ = __doctest.require ('sanctuary-def');
-    /* eslint-enable no-unused-vars */
+    /* eslint-enable no-unused-vars, no-var */
   }
 
-  var descendingTypeIdent = 'sanctuary-descending/Descending@1';
+  const descendingTypeIdent = 'sanctuary-descending/Descending@1';
 
-  var prototype = {
+  const prototype = {
     /* eslint-disable key-spacing */
     'constructor':            Descending,
     '@@type':                 descendingTypeIdent,
@@ -70,14 +69,16 @@
     'fantasy-land/reduce':    Descending$prototype$reduce,
     'fantasy-land/traverse':  Descending$prototype$traverse,
     'fantasy-land/extend':    Descending$prototype$extend,
-    'fantasy-land/extract':   Descending$prototype$extract
+    'fantasy-land/extract':   Descending$prototype$extract,
     /* eslint-enable key-spacing */
   };
 
-  var custom = util.inspect.custom;  // added in Node.js v6.6.0
-  /* istanbul ignore else */
-  if (typeof custom === 'symbol') {
-    prototype[custom] = Descending$prototype$show;
+  {
+    const {custom} = util.inspect;  // added in Node.js v6.6.0
+    /* istanbul ignore else */
+    if (typeof custom === 'symbol') {
+      prototype[custom] = Descending$prototype$show;
+    }
   }
 
   //. ```javascript
@@ -137,7 +138,7 @@
   //. Descending (42)
   //. ```
   function Descending(value) {
-    var descending = Object.create (prototype);
+    const descending = Object.create (prototype);
     if (Z.Setoid.test (value)) {
       descending['fantasy-land/equals'] = Descending$prototype$equals;
       if (Z.Ord.test (value)) {
@@ -161,8 +162,8 @@
   //. ```
   Descending['fantasy-land/of'] = Descending;
 
-  function next(x) { return {tag: next, value: x}; }
-  function done(x) { return {tag: done, value: x}; }
+  const next = x => ({tag: next, value: x});
+  const done = x => ({tag: done, value: x});
 
   //# Descending.fantasy-land/chainRec :: ((a -> c, b -> c, a) -> Descending c, a) -> Descending b
   //.
@@ -181,8 +182,8 @@
   //. . )
   //. Descending (0)
   //. ```
-  Descending['fantasy-land/chainRec'] = function(f, x) {
-    var r = next (x);
+  Descending['fantasy-land/chainRec'] = (f, x) => {
+    let r = next (x);
     while (r.tag === next) r = (f (next, done, r.value)).value;
     return Descending (r.value);
   };
@@ -332,7 +333,7 @@
 
   return Descending;
 
-}));
+});
 
 //. [Fantasy Land]:             v:fantasyland/fantasy-land
 //. [Identity]:                 https://github.com/sanctuary-js/sanctuary-identity
