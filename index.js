@@ -194,7 +194,7 @@
   //. `'Descending (' + show (x) + ')'`.
   //.
   //. ```javascript
-  //. > show (Descending (['foo', 'bar', 'baz']))
+  //. > S.show (Descending (['foo', 'bar', 'baz']))
   //. 'Descending (["foo", "bar", "baz"])'
   //. ```
   function Descending$prototype$show() {
