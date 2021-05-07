@@ -79,6 +79,12 @@
     if (typeof custom === 'symbol') {
       prototype[custom] = Descending$prototype$show;
     }
+    /* istanbul ignore if */
+    if (typeof Deno !== 'undefined') {
+      if (Deno != null && typeof Deno.customInspect === 'symbol') {
+        prototype[Deno.customInspect] = Descending$prototype$show;
+      }
+    }
   }
 
   //. ```javascript
