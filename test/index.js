@@ -9,7 +9,7 @@ import Z from 'sanctuary-type-classes';
 import type from 'sanctuary-type-identifiers';
 import Useless from 'sanctuary-useless';
 
-import Descending from '../index.js';
+import {Descending} from '../index.js';
 
 
 //    DescendingArb :: Arbitrary a -> Arbitrary (Descending a)
