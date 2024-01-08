@@ -1,14 +1,14 @@
-import assert       from 'assert';
+import {deepStrictEqual as eq} from 'assert';
 
-import laws         from 'fantasy-laws';
-import jsc          from 'jsverify';
-import test         from 'oletus';
-import show         from 'sanctuary-show';
-import Z            from 'sanctuary-type-classes';
-import type         from 'sanctuary-type-identifiers';
-import Useless      from 'sanctuary-useless';
+import laws from 'fantasy-laws';
+import jsc from 'jsverify';
+import test from 'oletus';
+import show from 'sanctuary-show';
+import Z from 'sanctuary-type-classes';
+import type from 'sanctuary-type-identifiers';
+import Useless from 'sanctuary-useless';
 
-import Descending   from '../index.js';
+import Descending from '../index.js';
 
 
 //    DescendingArb :: Arbitrary a -> Arbitrary (Descending a)
@@ -43,142 +43,132 @@ const not = b => !b;
 //    testLaws :: String -> Object -> Object -> Undefined
 const testLaws = typeClass => laws => arbs => {
   (Object.keys (laws)).forEach (name => {
-    eq (laws[name].length) (arbs[name].length);
+    eq (laws[name].length, arbs[name].length);
     const prettyName = name.replace (/[A-Z]/g, c => ' ' + c.toLowerCase ());
     test (`${typeClass} laws \x1B[2m›\x1B[0m ${prettyName}`,
           laws[name] (...arbs[name]));
   });
 };
 
-//    eq :: a -> b -> Undefined !
-function eq(actual) {
-  assert.strictEqual (arguments.length, eq.length);
-  return function eq$1(expected) {
-    assert.strictEqual (arguments.length, eq$1.length);
-    assert.strictEqual (show (actual), show (expected));
-    assert.strictEqual (Z.equals (actual, expected), true);
-  };
-}
-
 
 test ('metadata', () => {
-  eq (typeof Descending) ('function');
-  eq (Descending.name) ('Descending');
-  eq (Descending.length) (1);
+  eq (typeof Descending, 'function');
+  eq (Descending.name, 'Descending');
+  eq (Descending.length, 1);
 });
 
 test ('@@type', () => {
-  eq (type (Descending (0))) ('sanctuary-descending/Descending@1');
-  eq (type.parse (type (Descending (0))))
-     ({namespace: 'sanctuary-descending', name: 'Descending', version: 1});
+  eq (type (Descending (0)), 'sanctuary-descending/Descending@1');
+  eq (type.parse (type (Descending (0))),
+      {namespace: 'sanctuary-descending', name: 'Descending', version: 1});
 });
 
 test ('@@show', () => {
-  eq (show (Descending (['foo', 'bar', 'baz'])))
-     ('Descending (["foo", "bar", "baz"])');
-  eq (show (Descending (Descending (Descending (-0)))))
-     ('Descending (Descending (Descending (-0)))');
+  eq (show (Descending (['foo', 'bar', 'baz'])),
+      'Descending (["foo", "bar", "baz"])');
+  eq (show (Descending (Descending (Descending (-0)))),
+      'Descending (Descending (Descending (-0)))');
 });
 
 test ('Setoid', () => {
-  eq (Z.Setoid.test (Descending (Useless))) (false);
-  eq (Z.Setoid.test (Descending (/(?:)/))) (true);
+  eq (Z.Setoid.test (Descending (Useless)), false);
+  eq (Z.Setoid.test (Descending (/(?:)/)), true);
 });
 
 test ('Ord', () => {
-  eq (Z.Ord.test (Descending (Useless))) (false);
-  eq (Z.Ord.test (Descending (/(?:)/))) (false);
-  eq (Z.Ord.test (Descending (0))) (true);
+  eq (Z.Ord.test (Descending (Useless)), false);
+  eq (Z.Ord.test (Descending (/(?:)/)), false);
+  eq (Z.Ord.test (Descending (0)), true);
 });
 
 test ('Semigroupoid', () => {
-  eq (Z.Semigroupoid.test (Descending ([]))) (false);
+  eq (Z.Semigroupoid.test (Descending ([])), false);
 });
 
 test ('Category', () => {
-  eq (Z.Category.test (Descending ([]))) (false);
+  eq (Z.Category.test (Descending ([])), false);
 });
 
 test ('Semigroup', () => {
-  eq (Z.Semigroup.test (Descending (Useless))) (false);
-  eq (Z.Semigroup.test (Descending (0))) (false);
-  eq (Z.Semigroup.test (Descending ([]))) (true);
+  eq (Z.Semigroup.test (Descending (Useless)), false);
+  eq (Z.Semigroup.test (Descending (0)), false);
+  eq (Z.Semigroup.test (Descending ([])), true);
 });
 
 test ('Monoid', () => {
-  eq (Z.Monoid.test (Descending ([]))) (false);
+  eq (Z.Monoid.test (Descending ([])), false);
 });
 
 test ('Group', () => {
-  eq (Z.Group.test (Descending ([]))) (false);
+  eq (Z.Group.test (Descending ([])), false);
 });
 
 test ('Filterable', () => {
-  eq (Z.Filterable.test (Descending ([]))) (false);
+  eq (Z.Filterable.test (Descending ([])), false);
 });
 
 test ('Functor', () => {
-  eq (Z.Functor.test (Descending (Useless))) (true);
+  eq (Z.Functor.test (Descending (Useless)), true);
 });
 
 test ('Bifunctor', () => {
-  eq (Z.Bifunctor.test (Descending ([]))) (false);
+  eq (Z.Bifunctor.test (Descending ([])), false);
 });
 
 test ('Profunctor', () => {
-  eq (Z.Profunctor.test (Descending (Math.sqrt))) (false);
+  eq (Z.Profunctor.test (Descending (Math.sqrt)), false);
 });
 
 test ('Apply', () => {
-  eq (Z.Apply.test (Descending (Useless))) (true);
+  eq (Z.Apply.test (Descending (Useless)), true);
 });
 
 test ('Applicative', () => {
-  eq (Z.Applicative.test (Descending (Useless))) (true);
+  eq (Z.Applicative.test (Descending (Useless)), true);
 });
 
 test ('Chain', () => {
-  eq (Z.Chain.test (Descending (Useless))) (true);
+  eq (Z.Chain.test (Descending (Useless)), true);
 });
 
 test ('ChainRec', () => {
-  eq (Z.ChainRec.test (Descending (Useless))) (true);
+  eq (Z.ChainRec.test (Descending (Useless)), true);
 });
 
 test ('Monad', () => {
-  eq (Z.Monad.test (Descending (Useless))) (true);
+  eq (Z.Monad.test (Descending (Useless)), true);
 });
 
 test ('Alt', () => {
-  eq (Z.Alt.test (Descending ([]))) (false);
+  eq (Z.Alt.test (Descending ([])), false);
 });
 
 test ('Plus', () => {
-  eq (Z.Plus.test (Descending ([]))) (false);
+  eq (Z.Plus.test (Descending ([])), false);
 });
 
 test ('Alternative', () => {
-  eq (Z.Alternative.test (Descending ([]))) (false);
+  eq (Z.Alternative.test (Descending ([])), false);
 });
 
 test ('Foldable', () => {
-  eq (Z.Foldable.test (Descending (Useless))) (true);
+  eq (Z.Foldable.test (Descending (Useless)), true);
 });
 
 test ('Traversable', () => {
-  eq (Z.Traversable.test (Descending (Useless))) (true);
+  eq (Z.Traversable.test (Descending (Useless)), true);
 });
 
 test ('Extend', () => {
-  eq (Z.Extend.test (Descending (Useless))) (true);
+  eq (Z.Extend.test (Descending (Useless)), true);
 });
 
 test ('Comonad', () => {
-  eq (Z.Comonad.test (Descending (Useless))) (true);
+  eq (Z.Comonad.test (Descending (Useless)), true);
 });
 
 test ('Contravariant', () => {
-  eq (Z.Contravariant.test (Descending (Math.sqrt))) (false);
+  eq (Z.Contravariant.test (Descending (Math.sqrt)), false);
 });
 
 testLaws ('Setoid') (laws.Setoid) ({
