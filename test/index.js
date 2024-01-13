@@ -1,4 +1,5 @@
 import {deepStrictEqual as eq} from 'node:assert';
+import {inspect} from 'node:util';
 
 import laws from 'fantasy-laws';
 import jsc from 'jsverify';
@@ -67,6 +68,13 @@ test ('@@show', () => {
   eq (show (Descending (['foo', 'bar', 'baz'])),
       'Descending (["foo", "bar", "baz"])');
   eq (show (Descending (Descending (Descending (-0)))),
+      'Descending (Descending (Descending (-0)))');
+});
+
+test ('util.inspect', () => {
+  eq (inspect (Descending (['foo', 'bar', 'baz'])),
+      'Descending (["foo", "bar", "baz"])');
+  eq (inspect (Descending (Descending (Descending (-0)))),
       'Descending (Descending (Descending (-0)))');
 });
 
